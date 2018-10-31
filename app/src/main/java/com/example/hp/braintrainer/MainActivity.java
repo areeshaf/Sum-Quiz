@@ -56,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void playgame(){
+        button0.setEnabled(true);
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+
         Random random=new Random();
         int a=random.nextInt(21);
 
