@@ -98,9 +98,12 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 Button playAgainButton=findViewById(R.id.playAgainButton);
                 playAgainButton.setVisibility(View.VISIBLE);
-
-
                 resultTextView.setText("Time's Up!");
+                button0.setEnabled(false);
+                button1.setEnabled(false);
+                button2.setEnabled(false);
+                button3.setEnabled(false);
+
             }
         }.start();
     }
