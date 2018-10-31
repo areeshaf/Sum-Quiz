@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.support.v7.widget.GridLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     int score=0;
     int noOfQues=0;
 
-    GridLayout gridLayout;
     Button button0;
     Button button1;
     Button button2;
@@ -37,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startButtonFunc(View view){
      startButton.setVisibility(View.INVISIBLE);
+     constraintLayout.setVisibility(View.VISIBLE);
+     playgame();
+     timercount();
     }
 
     public void chooseAnswer(View view){
@@ -52,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView.setText(Integer.toString(score)+"/"+Integer.toString(noOfQues));
         playgame();
     }
+
+
     public void playgame(){
-
-
         Random random=new Random();
         int a=random.nextInt(21);
 
@@ -83,12 +84,10 @@ public class MainActivity extends AppCompatActivity {
         button1.setText(Integer.toString(answers.get(1)));
         button2.setText(Integer.toString(answers.get(2)));
         button3.setText(Integer.toString(answers.get(3)));
-
-
     }
 
-    public void timercount(){
 
+    public void timercount(){
         countDownTimer=new CountDownTimer(30100,1000) {
             @Override
             public void onTick(long l) {
@@ -100,14 +99,13 @@ public class MainActivity extends AppCompatActivity {
                 Button playAgainButton=findViewById(R.id.playAgainButton);
                 playAgainButton.setVisibility(View.VISIBLE);
 
-                gridLayout.setEnabled(false);
 
                 resultTextView.setText("Time's Up!");
-
-
             }
         }.start();
     }
+
+
     public void playAgain(View view){
         score=0;
         noOfQues=0;
@@ -119,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         playgame();
         timercount();
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,17 +134,13 @@ public class MainActivity extends AppCompatActivity {
 
         constraintLayout=findViewById(R.id.cons);
 
-        gridLayout=(GridLayout)findViewById(R.id.gridLayout);
+
         resultTextView=findViewById(R.id.resultTextView);
         playAgainButton=findViewById(R.id.playAgainButton);
         playAgainButton.setVisibility(View.INVISIBLE);
         timerTextView=findViewById(R.id.timerTextView);
         resultTextView.setVisibility(View.INVISIBLE);
-
-        playgame();
-
-        timercount();
-
-
+        startButton.setVisibility(View.VISIBLE);
+        constraintLayout.setVisibility(View.INVISIBLE);
     }
 }
